@@ -1,0 +1,42 @@
+{{template "base" .}}
+
+{{define "title"}}Signup{{end}}
+
+{{define "body"}}
+<div class="card-container">
+    <form id="signup-form" action='/signup' method="POST" novalidate>
+        <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+
+        {{with .Form}}
+        <div class="form-flex-container">
+            <div class="form-group">
+                <label class="form-label">Email:</label>
+                <input class="form-input" type='email' name='email' value='{{ .Get "email" }}'>
+                {{with .Errors.Get "email"}}
+                <label class="error">{{.}}</label>
+                {{end}}
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password:</label>
+                <input class="form-input" type='password' name='password' value='{{ .Get "password" }}'>
+                {{with .Errors.Get "password"}}
+                <label class="error">{{.}}</label>
+                {{end}}
+            </div>
+
+            <input class="btn-primary" type='submit' value='Signup'>
+
+        </div>
+        {{end}}
+    </form>
+
+    <p class="footer-text">
+        Already have an account?
+        <a href="/login" class="footer-link">
+            Log in
+        </a>
+    </p>
+</div>
+
+
+{{end}}

@@ -1,0 +1,218 @@
+:root {
+    --color-bg: #1f2937;
+    --color-card: #374151;
+    --color-primary: #3b82f6;
+    --color-primary-hover: #2563eb;
+    --color-text: #f3f4f6;
+    --color-text-label: #bfdbfe;
+    --color-text-secondary: #a3a3a3;
+    --color-input-bg: #4b5563;
+    --color-input-border: #6b7280;
+    --color-link: #60a5fa;
+    --color-link-hover: #3b82f6;
+    --color-success: #10b981;
+    --color-error: #ef4444;
+    --color-info: #3b82f6;
+    --color-input-disabled-bg: #2d3748;
+    --color-input-disabled-text: #8892a0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    padding: 0;
+    margin: 0;
+}
+
+/* --- Navbar Elements --- */
+
+.navbar {
+    background-color: var(--color-card);
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.navbar-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-link);
+    margin: 0;
+}
+
+/* --- Card Styling --- */
+.card-container {
+    max-width: 448px;
+    margin: 2rem auto;
+    background-color: var(--color-card);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* --- Form Elements --- */
+.form-flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.form-group:last-of-type {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-label);
+    margin-bottom: 0.25rem;
+}
+
+.form-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
+    color: var(--color-text);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.form-input:read-only {
+    background-color: var(--color-input-disabled-bg);
+    color: var(--color-input-disabled-text);
+    cursor: not-allowed;
+    opacity: 0.8;
+    border-color: var(--color-input-disabled-bg);
+}
+
+/* --- Button Styling --- */
+.btn-primary {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    transition: background-color 200ms, transform 200ms, box-shadow 200ms;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: scale(1.01);
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
+}
+
+/* --- Footer Link --- */
+.footer-text {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+.footer-link {
+    font-weight: 500;
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: var(--color-link-hover);
+}
+
+/* errors */
+.error {
+    color: var(--color-error);
+    font-size: 0.7rem;
+    margin: 0.3rem 0;
+}
+
+/* flash message */
+
+.flash {
+    color: #FFFFFF;
+    font-weight: bold;
+    background-color: #34495E;
+    padding: 18px;
+    margin-bottom: 36px;
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: #28a745;
+    animation: progress 3s linear forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* responsive design */
+@media only screen and (max-width: 600px) {
+    .card-container {
+        margin: 2rem;
+        max-width: 75%;
+    }
+}

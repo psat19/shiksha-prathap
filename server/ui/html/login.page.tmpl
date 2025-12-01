@@ -1,0 +1,45 @@
+{{template "base" .}}
+
+{{define "title"}}Login{{end}}
+
+{{define "body"}}
+{{with .Flash}}
+<div id="flashMessage" class="flash">{{.}}</div>
+<div class="progress-bar"></div>
+{{end}}
+
+<div class="card-container">
+    <form id="login" action='/login' method="POST" novalidate>
+        <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+
+        {{with .Form}}
+        <div class="form-flex-container">
+            <div class="form-group">
+                <label class="form-label">Email:</label>
+                <input class="form-input" type='email' name='email' value='{{ .Get "email" }}'>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password:</label>
+                <input class="form-input" type='password' name='password' value='{{ .Get "password" }}'>
+            </div>
+
+            {{with .Errors.Get "generic"}}
+            <div class='error'>{{.}}</div>
+            {{end}}
+
+            <input class="btn-primary" type='submit' value='Login'>
+
+        </div>
+        {{end}}
+    </form>
+
+    <p class="footer-text">
+        Don't have an account?
+        <a href="/" class="footer-link">
+            Sign Up
+        </a>
+    </p>
+</div>
+
+
+{{end}}

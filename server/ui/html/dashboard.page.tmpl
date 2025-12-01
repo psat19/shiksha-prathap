@@ -1,0 +1,60 @@
+{{template "base" .}}
+
+{{define "title"}}Dashboard{{end}}
+
+{{define "body"}}
+{{with .Flash}}
+<div id="flashMessage" class="flash">{{.}}</div>
+<div class="progress-bar"></div>
+{{end}}
+
+<div class="card-container">
+    <form id="dashboard" action='/dashboard' method="POST" novalidate>
+        <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+
+        {{with .Form}}
+        <input type='hidden' name='id' value='{{ .Get "id" }}'>
+        <div class="form-flex-container">
+            <div class="form-group">
+                <label class="form-label">Email:</label>
+                <input readonly id="email" class="form-input" type='email' name='email' value='{{ .Get "email" }}'>
+                {{with .Errors.Get "email"}}
+                <label class="error">{{.}}</label>
+                {{end}}
+            </div>
+            <div class="form-group">
+                <label class="form-label">Name:</label>
+                <input class="form-input" type='text' name='username' value='{{ .Get "username" }}'>
+                {{with .Errors.Get "username"}}
+                <label class="error">{{.}}</label>
+                {{end}}
+            </div>
+            <div class="form-group">
+                <label class="form-label">Age:</label>
+                <input class="form-input" type='number' name='age' value='{{ .Get "age" }}'>
+                {{with .Errors.Get "age"}}
+                <label class="error">{{.}}</label>
+                {{end}}
+            </div>
+            <div class="form-group">
+                <label class="form-label">Phone:</label>
+                <input class="form-input" type='tel' name='phone' value='{{ .Get "phone" }}'>
+                {{with .Errors.Get "phone"}}
+                <label class="error">{{.}}</label>
+                {{end}}
+            </div>
+
+            <input class="btn-primary" type='submit' value='Update'>
+
+        </div>
+        {{end}}
+    </form>
+
+    <p class="footer-text">
+    <form action='/logout' method='POST'>
+        <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+        <button class="btn-primary">Logout</button>
+    </form>
+    </p>
+</div>
+{{end}}
